@@ -10,6 +10,7 @@ namespace Tyler_Kaufmann_Week_3.Controllers
         [HttpPost(Name = "CalculateStDev")]
         public ActionResult<List<string>> PostStDev(List<int> data)
         {
+            LogObject(data);
             data = data.OrderBy(x => x).ToList();
 
             List<int> childList = new List<int>();
@@ -40,6 +41,14 @@ namespace Tyler_Kaufmann_Week_3.Controllers
             double sampleMean = data.Average(x => x);
             double step2Result = data.Sum(num => Math.Pow(num - sampleMean, 2));
             return Math.Sqrt(step2Result / (length - 1));
+        }
+
+        private void LogObject(List<int> data)
+        {
+            foreach(int num in data)
+            {
+                System.Diagnostics.Debug.WriteLine(num);
+            }
         }
     }
 }
