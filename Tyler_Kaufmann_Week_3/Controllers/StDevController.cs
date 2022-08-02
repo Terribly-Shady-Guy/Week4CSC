@@ -4,13 +4,13 @@ namespace Tyler_Kaufmann_Week_3.Controllers
 {
     [ApiController]
     [Route("[controller]")]
-    public class CalcStDevApi : ControllerBase
+    public class StDevController : ControllerBase
     {
 
         [HttpPost(Name = "CalculateStDev")]
         public ActionResult<List<string>> PostStDev(List<int> data)
         {
-            LogObject(data);
+            DebugLogger.LogObject(data);
             data.Sort();
 
             List<int> childList = new List<int>();
@@ -41,14 +41,6 @@ namespace Tyler_Kaufmann_Week_3.Controllers
             double sampleMean = data.Average();
             double sum = data.Sum(num => Math.Pow(num - sampleMean, 2));
             return Math.Sqrt(sum / (length - 1));
-        }
-
-        private static void LogObject(List<int> data)
-        {
-            foreach (int num in data)
-            {
-                System.Diagnostics.Debug.WriteLine(num);
-            }
         }
     }
 }
