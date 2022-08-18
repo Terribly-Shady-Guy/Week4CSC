@@ -23,7 +23,7 @@ namespace Tyler_Kaufmann_Week_3.Controllers
 
                 if (childLength > 1)
                 {
-                    double stDev = CalcStDev(childList, childLength);
+                    double stDev = CalculateStDev(childList, childLength);
                     results.Add($"Elements: {childLength} Current Standard Deviation: {stDev}.");
                 }
                 else
@@ -36,7 +36,7 @@ namespace Tyler_Kaufmann_Week_3.Controllers
         }
 
         // Calculates Standard Deviation using Sqrt(Sum((x[i] - sampleMean)^2) / (N - 1)).
-        private static double CalcStDev(List<int> data, int length)
+        private static double CalculateStDev(List<int> data, int length)
         {
             double sampleMean = data.Average();
             double sum = data.Sum(num => Math.Pow(num - sampleMean, 2));
